@@ -1,15 +1,8 @@
 package com.practice.jpa.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "MEMBER")
@@ -20,13 +13,26 @@ import lombok.Setter;
 public class Member {
     
     @Id
-    @Column(name = "ID")
-    private String id;
+    @SequenceGenerator(
+        name = "MEMBER_SEQ_GENERATOR",
+        sequenceName = "MEMBER_SEQ", // 매핑할 데이터베이스 시퀀스 명
+        initialValue = 1,
+        allocationSize = 1
+    )
+    @Column(name = "MEMBER_ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "MEMBER_SEQ_GENERATOR")
+    private Long id;
 
     @Column(name = "NAME")
-    private String username;
+    private String name;
 
     // @Column(name = "AGE")
     private Integer age;
 
+    @Builder
+    public Member(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
 }
