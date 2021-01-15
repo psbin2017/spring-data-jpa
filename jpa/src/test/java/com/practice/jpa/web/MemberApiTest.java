@@ -1,5 +1,6 @@
 package com.practice.jpa.web;
 
+import com.practice.jpa.domain.member.api.MemberApi;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,8 +14,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 // Junit4 @RunWith(SpringRunner.class)
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(controllers = MemberController.class)
-public class MemberControllerTest {
+@WebMvcTest(controllers = MemberApi.class)
+public class MemberApiTest {
 
     @Autowired
     private MockMvc mockMvc;

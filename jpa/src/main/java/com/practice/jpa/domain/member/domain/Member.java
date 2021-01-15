@@ -1,8 +1,8 @@
-package com.practice.jpa.domain;
-
-import javax.persistence.*;
+package com.practice.jpa.domain.member.domain;
 
 import lombok.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "MEMBER")

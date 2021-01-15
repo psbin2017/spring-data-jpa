@@ -1,6 +1,6 @@
-package com.practice.jpa.repository;
+package com.practice.jpa.domain.member.repository;
 
-import com.practice.jpa.domain.Member;
+import com.practice.jpa.domain.member.domain.Member;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

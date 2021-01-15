@@ -1,7 +1,8 @@
 package com.practice.jpa.service;
 
-import com.practice.jpa.domain.Member;
-import com.practice.jpa.repository.MemberRepository;
+import com.practice.jpa.domain.member.domain.Member;
+import com.practice.jpa.domain.member.repository.MemberRepository;
+import com.practice.jpa.domain.member.service.MemberService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
