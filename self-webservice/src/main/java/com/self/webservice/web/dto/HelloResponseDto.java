@@ -1,4 +1,4 @@
-package com.self.webservice.web.domain.dto;
+package com.self.webservice.web.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

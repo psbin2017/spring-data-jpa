@@ -1,6 +1,6 @@
 package com.self.webservice.web.controller;
 
-import com.self.webservice.web.domain.dto.HelloResponseDto;
+import com.self.webservice.web.dto.HelloResponseDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

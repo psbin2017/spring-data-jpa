@@ -1,4 +1,4 @@
-package com.self.webservice.web.domain.dto;
+package com.self.webservice.web.dto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
