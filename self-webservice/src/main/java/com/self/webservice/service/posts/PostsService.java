@@ -6,6 +6,9 @@ import com.self.webservice.web.dto.posts.PostsResponseDto;
 import com.self.webservice.web.dto.posts.PostsSaveRequestDto;
 import com.self.webservice.web.dto.posts.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,11 +39,15 @@ public class PostsService {
         return id;
     }
 
-    public PostsResponseDto findById(final Long id) {
+    public PostsResponseDto findById(Long id) {
         Posts entity = beforeFindById(id);
         return new PostsResponseDto(entity);
     }
 
+    public Page<PostsResponseDto> findAllByPaging(@PageableDefault Pageable pageable) {
+        Page<Posts> entityList = postsRepository.findAll(pageable);
+        return entityList.map(PostsResponseDto::new);
+    }
     /**
      * 작업 이전에 게시글이 있는지 확인한다.
      * @param id 게시글 번호

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * `@RestController` 는 반환 타입을 JSON 객체로 반환하게 한다.
  */
 @RestController
-public class HelloController {
+public class HelloApi {
 
     @GetMapping("/hello")
     public String hello() {

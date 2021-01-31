@@ -14,8 +14,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 // Junit4 @RunWith(SpringRunner.class)
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(controllers = HelloController.class)
-public class HelloControllerTest {
+@WebMvcTest(controllers = HelloApi.class)
+public class HelloApiTest {
 
     @Autowired
     private MockMvc mockMvc;

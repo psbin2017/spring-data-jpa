@@ -33,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 // @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@ActiveProfiles("local")
+@ActiveProfiles("test")
 public class PostApiTest {
 
     @LocalServerPort

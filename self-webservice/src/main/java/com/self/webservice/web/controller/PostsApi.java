@@ -5,6 +5,9 @@ import com.self.webservice.web.dto.posts.PostsResponseDto;
 import com.self.webservice.web.dto.posts.PostsSaveRequestDto;
 import com.self.webservice.web.dto.posts.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,6 +25,11 @@ public class PostsApi {
     public Long update(@PathVariable Long id,
                        @RequestBody PostsUpdateRequestDto requestDto) {
         return postsService.update(id, requestDto);
+    }
+
+    @GetMapping("/api/v1/posts")
+    public Page<PostsResponseDto> findAllByPaging(@PageableDefault Pageable pageable) {
+        return postsService.findAllByPaging(pageable);
     }
 
     @DeleteMapping("/api/v1/posts/{id}")

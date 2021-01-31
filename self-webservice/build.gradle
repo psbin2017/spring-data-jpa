@@ -26,12 +26,18 @@ dependencies {
     // jpa
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
+    // template engine
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
+
     // h2
     runtimeOnly 'com.h2database:h2'
 
     // lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    // devtools
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
     // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
