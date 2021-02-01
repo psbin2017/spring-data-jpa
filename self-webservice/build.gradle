@@ -29,6 +29,11 @@ dependencies {
     // template engine
     implementation 'org.springframework.boot:spring-boot-starter-mustache'
 
+    // security
+    // implementation 'org.springframework.boot:spring-boot-starter-security'
+    // security oauth2 depends on spring boot 2.0 +
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
     // h2
     runtimeOnly 'com.h2database:h2'
 
