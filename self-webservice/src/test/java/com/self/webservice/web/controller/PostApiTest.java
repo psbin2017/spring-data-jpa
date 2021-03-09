@@ -1,30 +1,19 @@
 package com.self.webservice.web.controller;
 
 import com.self.webservice.domain.posts.PostsRepository;
-import com.self.webservice.web.dto.posts.PostsResponseDto;
-import com.self.webservice.web.dto.posts.PostsSaveRequestDto;
-import com.self.webservice.web.dto.posts.PostsUpdateRequestDto;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.*;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.context.WebApplicationContext;
 
-import java.util.Objects;
 import java.util.stream.Stream;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * `@WebMvcTest` 는 JPA 기능이 동작하지 않는다.
@@ -33,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 // @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@ActiveProfiles("test")
+// @ActiveProfiles("test")
 public class PostApiTest {
 
     @LocalServerPort
@@ -48,11 +37,18 @@ public class PostApiTest {
     @Autowired
     private PostsRepository postsRepository;
 
+    @Autowired
+    private WebApplicationContext context;
+
+    private MockMvc mvc;
+
     @AfterEach
     public void teardown() {
         postsRepository.deleteAll();
     }
 
+    /*
+    @WithMockUser(roles = "USER")
     @DisplayName("게시글을 저장한다.")
     @ParameterizedTest
     @CsvSource({
@@ -78,6 +74,7 @@ public class PostApiTest {
         assertThat(responseEntity.getBody(), greaterThan(0L));
     }
 
+    @WithMockUser(roles = "USER")
     @DisplayName("게시글을 저장하고 조회한다.")
     @ParameterizedTest
     @MethodSource("ParameterizedTest_ByMethodSource")
@@ -105,6 +102,7 @@ public class PostApiTest {
         );
     }
 
+    @WithMockUser(roles = "USER")
     @DisplayName("게시글을 수정한다.")
     @Test
     public void PostsApi_updateTest() {
@@ -149,6 +147,7 @@ public class PostApiTest {
                 Objects.requireNonNull(findByIdResponseEntity.getBody()).getContent(), afterContent
         );
     }
+    */
 
     /**
      * `@ParameterizedTest` 에서 `@MethodSource` 로 사용하는 파라미터를 반환한다.
