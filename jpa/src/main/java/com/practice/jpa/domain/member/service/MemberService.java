@@ -2,17 +2,18 @@ package com.practice.jpa.domain.member.service;
 
 import com.practice.jpa.domain.member.domain.Member;
 import com.practice.jpa.domain.member.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
 public class MemberService {
 
     private final MemberRepository memberRepository;
-
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
 
     @Transactional
     public Long register(Member member) {
@@ -20,7 +21,10 @@ public class MemberService {
         return savedMember.getId();
     }
 
-    @Transactional(readOnly = true)
+    public List<Member> findByAge(Integer age) {
+        return memberRepository.findByAge(age);
+    }
+
     public Member findByName(String name) {
         return memberRepository.findByName(name)
                     .orElseThrow(() -> new IllegalArgumentException(name+ "의 회원은 없습니다."));

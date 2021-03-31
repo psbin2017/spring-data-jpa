@@ -9,8 +9,8 @@ import javax.persistence.*;
 @Table(name = "BOARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-@Setter(value = AccessLevel.PRIVATE)
 @Getter
+@Setter(value = AccessLevel.PRIVATE)
 public class Board extends BaseTimeEntity {
 
     @Id
